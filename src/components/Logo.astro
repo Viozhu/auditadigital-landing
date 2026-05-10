@@ -1,0 +1,81 @@
+---
+/**
+ * <Logo /> — auditadigital
+ *
+ * Variantes:
+ *   variant="color"      → "audita" usa currentColor + "digital" en azul (#2E5BFF)
+ *   variant="mono-white" → todo blanco
+ *   variant="mono-black" → todo negro
+ *   variant="dark"       → blanco + azul (forzado)
+ *   variant="light"      → negro + azul (forzado)
+ *
+ * showDots={false} oculta los 4 puntos (útil para firmas de email muy compactas).
+ *
+ * Uso:
+ *   import Logo from "../components/Logo.astro";
+ *   <Logo variant="color" height={40} />
+ */
+
+interface Props {
+  variant?: "color" | "mono-white" | "mono-black" | "dark" | "light";
+  height?: number;
+  showDots?: boolean;
+  ariaLabel?: string;
+  class?: string;
+}
+
+const {
+  variant = "color",
+  height = 40,
+  showDots = true,
+  ariaLabel = "auditadigital",
+  class: className = "",
+} = Astro.props;
+
+const palette = {
+  color:        { audita: "currentColor", digital: "#2E5BFF", dotA: "#2E5BFF", dotB: "#A3FF12" },
+  "mono-white": { audita: "#FFFFFF",      digital: "#FFFFFF", dotA: "#FFFFFF", dotB: "#FFFFFF" },
+  "mono-black": { audita: "#050505",      digital: "#050505", dotA: "#050505", dotB: "#050505" },
+  dark:         { audita: "#FFFFFF",      digital: "#2E5BFF", dotA: "#2E5BFF", dotB: "#A3FF12" },
+  light:        { audita: "#050505",      digital: "#2E5BFF", dotA: "#2E5BFF", dotB: "#A3FF12" },
+}[variant];
+
+// viewBox: 720×200 con dots o 720×140 sin dots
+const vb = showDots ? "0 0 720 200" : "0 20 720 160";
+const width = (height * 720) / (showDots ? 200 : 160);
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={vb}
+  width={width}
+  height={height}
+  role="img"
+  aria-label={ariaLabel}
+  class={`auditadigital-logo ${className}`}
+>
+  <title>{ariaLabel}</title>
+  {showDots && (
+    <g>
+      <circle cx="26" cy="38" r="6" fill={palette.dotA} />
+      <circle cx="50" cy="38" r="6" fill={palette.dotB} />
+      <circle cx="74" cy="38" r="6" fill={palette.dotA} />
+      <circle cx="98" cy="38" r="6" fill={palette.dotB} />
+    </g>
+  )}
+  <text
+    x="20"
+    y="160"
+    font-family="'Space Grotesk', system-ui, -apple-system, sans-serif"
+    font-weight="700"
+    font-size="96"
+    letter-spacing="-2.4"
+    fill={palette.audita}
+  >
+    audita<tspan fill={palette.digital}>digital</tspan>
+  </text>
+</svg>
+
+<style>
+  .auditadigital-logo { display: inline-block; vertical-align: middle; }
+</style>

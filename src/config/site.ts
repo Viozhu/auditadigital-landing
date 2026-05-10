@@ -9,7 +9,7 @@ export const GUARANTEE_MIN_FAULTS = 3;
 // --- About Stats ---
 export const aboutStats = [
   { value: '120+', label: 'webs auditadas', color: 'text-blue' },
-  { value: '€4.2M', label: 'en ads gestionados', color: 'text-green' },
+  { value: '$4.2M', label: 'en ads gestionados', color: 'text-green' },
   { value: '12', label: 'años en producto', color: '' },
 ] as const;
 
@@ -25,7 +25,7 @@ export const trustBadges = [
 export const pricingIncludes = [
   'Informe interactivo en dashboard + PDF descargable',
   'Auditoría completa de los 4 pilares',
-  'Lista priorizada de fallos críticos por € de impacto',
+  'Lista priorizada de fallos críticos por $ de impacto',
   'Hoja de ruta accionable a 30 días',
   'Benchmark con 3 competidores directos',
   'Análisis individual de tus Meta Ads activos',
@@ -65,7 +65,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     stars: '★★★★★',
-    quote: 'Mi anterior agencia me pasó un PDF de 80 páginas que no leí jamás. AuditaDigital me devolvió <strong class="text-green font-semibold">una hoja con 12 acciones priorizadas por € de impacto.</strong> Por fin sé qué hacer el lunes.',
+    quote: 'Mi anterior agencia me pasó un PDF de 80 páginas que no leí jamás. AuditaDigital me devolvió <strong class="text-green font-semibold">una hoja con 12 acciones priorizadas por $ de impacto.</strong> Por fin sé qué hacer el lunes.',
     result: '▲ Roadmap ejecutable · 12 acciones',
     initials: 'DC',
     avatarStyle: 'background: linear-gradient(135deg, #ff5c00, #b34000); color: #ffffff;',
@@ -91,7 +91,7 @@ export const faqs: Faq[] = [
   },
   {
     q: '¿Y si no tengo tiempo de implementarlo?',
-    a: 'El informe está priorizado por <strong class="text-paper font-medium">impacto en € vs. esfuerzo</strong>. Te decimos exactamente cuáles son las 3 acciones que mover esta semana, cuáles este mes, y cuáles dejar para luego. Si tienes desarrollador o agencia, el documento está pensado para que lo ejecuten directamente sin más explicaciones.',
+    a: 'El informe está priorizado por <strong class="text-paper font-medium">impacto en $ vs. esfuerzo</strong>. Te decimos exactamente cuáles son las 3 acciones que mover esta semana, cuáles este mes, y cuáles dejar para luego. Si tienes desarrollador o agencia, el documento está pensado para que lo ejecuten directamente sin más explicaciones.',
   },
   {
     q: '¿Subiréis el precio? ¿Cuándo?',
@@ -208,7 +208,7 @@ export const processSteps: ProcessStep[] = [
     num: '03',
     when: '24–48h',
     title: 'Lectura humana',
-    desc: 'Un estratega prioriza los hallazgos por impacto en € y monta la hoja de ruta accionable.',
+    desc: 'Un estratega prioriza los hallazgos por impacto en $ y monta la hoja de ruta accionable.',
   },
   {
     num: '04',

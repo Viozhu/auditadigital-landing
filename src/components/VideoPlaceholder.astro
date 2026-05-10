@@ -3,7 +3,7 @@
 <section class="py-14 border-b border-line" id="video">
   <div class="mx-auto max-w-[1240px] px-6">
     <div class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.12em] mb-5">
-      <span class="text-orange">02</span> · DEMO 60s · cómo se ve un informe real
+      <span class="text-orange">02</span> · DEMO 40s · cómo se ve un informe real
     </div>
 
     <div
@@ -26,7 +26,7 @@
       <div id="vf-content" style="position:absolute;top:40px;left:0;right:0;bottom:36px;overflow:hidden;background:#f5f5f5">
 
         <!-- SCENE 1 · Dashboard ─────────────────────────── -->
-        <div id="vf-s1" style="position:absolute;inset:0;opacity:0;transition:opacity 0.5s;pointer-events:none;overflow:hidden;background:#f5f5f5">
+        <div id="vf-s1" style="position:absolute;inset:0;opacity:0;transition:opacity 0.25s;pointer-events:none;overflow:hidden;background:#f5f5f5">
           <div style="background:#1a1a2e;color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center">
             <div>
               <div style="font-size:9px;opacity:.5;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px">Auditoría Completa</div>
@@ -83,7 +83,7 @@
         </div>
 
         <!-- SCENE 2 · SEO Audit ─────────────────────────── -->
-        <div id="vf-s2" style="position:absolute;inset:0;opacity:0;transition:opacity 0.5s;pointer-events:none;overflow:hidden;background:#f9fafb">
+        <div id="vf-s2" style="position:absolute;inset:0;opacity:0;transition:opacity 0.25s;pointer-events:none;overflow:hidden;background:#f9fafb">
           <div style="background:linear-gradient(135deg,#1e1b4b 0%,#312e81 50%,#4338ca 100%);color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center">
             <div>
               <div style="display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:2px 12px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px">Auditoría SEO</div>
@@ -161,7 +161,7 @@
         </div>
 
         <!-- SCENE 3 · Meta Ads ──────────────────────────── -->
-        <div id="vf-s3" style="position:absolute;inset:0;opacity:0;transition:opacity 0.5s;pointer-events:none;overflow:hidden;background:#f8fafc">
+        <div id="vf-s3" style="position:absolute;inset:0;opacity:0;transition:opacity 0.25s;pointer-events:none;overflow:hidden;background:#f8fafc">
           <div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);color:white;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
             <div>
               <div style="font-size:11px;color:#94a3b8;margin-bottom:4px;font-weight:600">AUDITORÍA META ADS</div>
@@ -246,7 +246,7 @@
         </div>
 
         <!-- SCENE 4 · Quick Wins ────────────────────────── -->
-        <div id="vf-s4" style="position:absolute;inset:0;opacity:0;transition:opacity 0.5s;pointer-events:none;overflow:hidden;background:#f9fafb;padding:14px 16px">
+        <div id="vf-s4" style="position:absolute;inset:0;opacity:0;transition:opacity 0.25s;pointer-events:none;overflow:hidden;background:#f9fafb;padding:14px 16px">
           <div style="margin-bottom:12px">
             <div style="font-size:9px;text-transform:uppercase;letter-spacing:1.5px;color:#9ca3af;font-weight:700;margin-bottom:4px">Auditoría completa · inmosur.com.ar</div>
             <div style="font-size:18px;font-weight:800;color:#111827;letter-spacing:-.3px">⚡ Quick wins — acción inmediata</div>
@@ -299,7 +299,7 @@
           <div id="vf-progress" style="height:100%;background:#a3ff12;width:0%;transition:width .3s linear"></div>
         </div>
         <span style="font-family:monospace;font-size:11px;color:#6b7280;white-space:nowrap">
-          <b id="vf-time" style="color:#a3ff12">00:00</b> / 01:00
+          <b id="vf-time" style="color:#a3ff12">00:00</b> / 00:40
         </span>
       </div>
 
@@ -334,7 +334,7 @@
   /* ─── Scene schedule ─────────────────────────────────── */
   const SCENES = [
     {
-      start: 0, end: 12,
+      start: 0, end: 8,
       id: 'vf-s1',
       label: '01 / Dashboard',
       onEnter(push) {
@@ -344,26 +344,26 @@
           v = Math.min(v + 3, 42);
           if (scoreEl) scoreEl.textContent = String(v);
           if (v >= 42) clearInterval(iv);
-        }, 45);
+        }, 30);
 
         ['s1c0','s1c1','s1c2','s1c3'].forEach((id) => {
           push(setTimeout(() => {
             const el = document.getElementById(id);
             if (el) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }
-          }, 400));
+          }, 300));
         });
         push(setTimeout(() => {
           const el = document.getElementById('s1-sum');
           if (el) el.style.opacity = '1';
-        }, 1000));
+        }, 700));
         push(setTimeout(() => {
           const el = document.getElementById('s1-iss');
           if (el) el.style.opacity = '1';
-        }, 2000));
+        }, 1400));
       },
     },
     {
-      start: 12, end: 24,
+      start: 8, end: 18,
       id: 'vf-s2',
       label: '02 / SEO Audit',
       onEnter(push) {
@@ -371,25 +371,25 @@
           push(setTimeout(() => {
             const el = document.getElementById(id);
             if (el) { el.style.opacity = '1'; el.style.transform = 'translateX(0)'; }
-          }, 500 + i * 1000));
+          }, 300 + i * 550));
         });
       },
     },
     {
-      start: 24, end: 38,
+      start: 18, end: 27,
       id: 'vf-s3',
       label: '03 / Meta Ads',
       onEnter(push) {
-        ['s3c0','s3c1','s3c2','s3c3'].forEach((id) => {
+        ['s3c0','s3c1','s3c2','s3c3'].forEach((id, i) => {
           push(setTimeout(() => {
             const el = document.getElementById(id);
             if (el) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }
-          }, 400));
+          }, 300 + i * 400));
         });
       },
     },
     {
-      start: 38, end: 60,
+      start: 27, end: 40,
       id: 'vf-s4',
       label: '04 / Quick Wins',
       onEnter(push) {
@@ -397,7 +397,7 @@
           push(setTimeout(() => {
             const el = document.getElementById(id);
             if (el) { el.style.opacity = '1'; el.style.transform = 'translateX(0)'; }
-          }, 400 + i * 1000));
+          }, 300 + i * 500));
         });
       },
     },
@@ -481,14 +481,14 @@
     if (!startTs) startTs = ts;
     const elapsed = (ts - startTs) / 1000;
 
-    if (elapsed >= 60) {
+    if (elapsed >= 40) {
       if (progressEl) progressEl.style.width = '100%';
-      if (timeEl) timeEl.textContent = '01:00';
+      if (timeEl) timeEl.textContent = '00:40';
       showReplay();
       return;
     }
 
-    if (progressEl) progressEl.style.width = (elapsed / 60 * 100).toFixed(2) + '%';
+    if (progressEl) progressEl.style.width = (elapsed / 40 * 100).toFixed(2) + '%';
     if (timeEl) timeEl.textContent = fmt(elapsed);
 
     const idx = SCENES.findIndex(s => elapsed >= s.start && elapsed < s.end);

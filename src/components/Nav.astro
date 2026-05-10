@@ -1,5 +1,6 @@
 ---
 import { PRICE_LAUNCH } from '../config/site';
+import Logo from './Logo.astro';
 
 interface Props {
   stripeLink: string;
@@ -9,8 +10,7 @@ const { stripeLink } = Astro.props;
 <nav class="sticky top-0 z-50 border-b border-line bg-ink/80 backdrop-blur-[10px] saturate-150">
   <div class="mx-auto max-w-[1240px] px-6 flex items-center justify-between h-[60px]">
     <a href="#top" class="flex items-center gap-[10px]">
-      <span class="logo-mark w-[22px] h-[22px] bg-green rounded-xs relative flex-shrink-0"></span>
-      <strong class="font-display font-bold text-base tracking-[-0.015em]">auditadigital</strong>
+      <Logo variant="color" height={28} class="text-paper" />
       <span class="font-mono text-[11px] text-mute ml-1">v1.0</span>
     </a>
     <div class="hidden md:flex gap-7 font-mono text-[12px] text-mute-2 uppercase tracking-[0.08em]">
@@ -29,23 +29,3 @@ const { stripeLink } = Astro.props;
     </a>
   </div>
 </nav>
-
-<style>
-  .logo-mark::after {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    background: #050505;
-    border-radius: 1px;
-  }
-  .logo-mark::before {
-    content: "";
-    position: absolute;
-    left: 9px;
-    top: 5px;
-    width: 4px;
-    height: 12px;
-    background: #a3ff12;
-    z-index: 2;
-  }
-</style>

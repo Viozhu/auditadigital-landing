@@ -1,0 +1,20 @@
+/* tokens.css — auditadigital */
+:root {
+  /* Colores oficiales de marca */
+  --ad-ink:    #050505;  /* fondo dark / texto */
+  --ad-ink-2:  #0b0b0c;  /* superficie dark */
+  --ad-line:   #1f1f23;  /* bordes en dark */
+  --ad-paper:  #ffffff;  /* fondo light / texto sobre dark */
+  --ad-mute:   #6a6a73;  /* texto secundario light */
+  --ad-mute-2: #9b9ba6;  /* texto secundario dark */
+
+  /* Acentos */
+  --ad-blue:   #2E5BFF;  /* primario · "digital" */
+  --ad-green:  #A3FF12;  /* secundario · live / OK */
+  --ad-orange: #FF5C00;  /* alerta */
+
+  /* Tipografía */
+  --ad-font-display: "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --ad-font-body:    "Geist", "Inter", system-ui, sans-serif;
+  --ad-font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+}

@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import '../styles/tokens.css';
+import Favicon from '../components/Favicon.astro';
 
 interface Props {
   title?: string;
@@ -19,6 +21,7 @@ const STRIPE_LINK = import.meta.env.PUBLIC_STRIPE_LINK ?? '#precio';
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <Favicon />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
