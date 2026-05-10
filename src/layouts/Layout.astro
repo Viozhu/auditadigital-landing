@@ -1,0 +1,30 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = "AuditaDigital — Tu radiografía digital en 48h por $50",
+  description = "Auditoría profunda de tu web en 4 pilares: SEO, Negocio, Competencia y Meta Ads. Entregada en 48h. Sin reuniones de venta.",
+} = Astro.props;
+
+const STRIPE_LINK = import.meta.env.PUBLIC_STRIPE_LINK ?? '#precio';
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script defer data-domain="auditadigital.com" src="https://plausible.io/js/script.js"></script>
+</head>
+<body>
+  <slot />
+</body>
+</html>

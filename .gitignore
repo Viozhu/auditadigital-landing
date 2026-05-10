@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build output
+dist/
+.astro/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Misc
+.DS_Store
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# Claude
+.claude/
+CLAUDE.original.md
+
+# Playwright
+.playwright-mcp/

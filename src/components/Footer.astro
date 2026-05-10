@@ -1,0 +1,20 @@
+---
+interface Props {
+  slots: number;
+}
+const { slots } = Astro.props;
+---
+<footer class="pt-12 pb-8 border-t border-line bg-ink-2">
+  <div class="mx-auto max-w-[1240px] px-6 grid grid-cols-1 md:grid-cols-[1fr_auto_auto] gap-8 items-center">
+    <div class="font-mono text-[11px] text-mute">© 2026 AuditaDigital</div>
+    <div class="flex gap-6 font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">
+      <a href="/aviso-legal" class="hover:text-paper transition-colors">Aviso legal</a>
+      <a href="/privacidad" class="hover:text-paper transition-colors">Privacidad</a>
+      <a href="mailto:hola@auditadigital.com" class="hover:text-paper transition-colors">Contacto</a>
+    </div>
+    <div class="flex items-center gap-2 font-mono text-[11px] text-mute-2">
+      <span class="w-2 h-2 rounded-full bg-green" style="box-shadow: 0 0 0 3px rgba(163,255,18,0.15);"></span>
+      Sistema operativo · {slots} slots
+    </div>
+  </div>
+</footer>

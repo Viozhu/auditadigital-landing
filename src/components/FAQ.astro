@@ -1,0 +1,49 @@
+---
+import { faqs } from '../config/site';
+---
+<section class="py-24 border-b border-line" id="faq">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 mb-14 items-start">
+      <div class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.12em] pt-3">
+        <span class="text-orange">09</span> · Dudas
+      </div>
+      <div>
+        <h2 class="font-display font-bold leading-[0.95] tracking-[-0.035em] max-w-[22ch]"
+            style="font-size: clamp(36px, 5vw, 64px);">
+          Preguntas que ya nos han hecho.
+        </h2>
+      </div>
+    </div>
+
+    <div class="faq flex flex-col">
+      {faqs.map((faq, i) => (
+        <div class={`faq-row border-b border-line py-[26px] ${i === 0 ? 'border-t open' : ''}`}>
+          <div class="q cursor-pointer items-center gap-4 max-md:grid max-md:grid-cols-[1fr_28px]"
+               style="display: grid; grid-template-columns: 60px 1fr 28px;">
+            <span class="font-mono text-[11px] text-orange tracking-[0.08em] max-md:hidden">
+              0{i + 1}
+            </span>
+            <span class="font-display font-semibold text-[20px] tracking-[-0.015em] leading-[1.25]">{faq.q}</span>
+            <span class="plus w-[28px] h-[28px] grid place-items-center border border-line-2 rounded-xs text-mute-2 font-mono font-medium text-[16px] transition-all duration-200 select-none">+</span>
+          </div>
+          <div class="a hidden text-mute-2 text-[16px] leading-[1.6] max-w-[70ch] pt-4"
+               style="padding-left: 76px;"
+               set:html={faq.a}></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-row.open .q .plus {
+    background: #2e5bff;
+    border-color: #2e5bff;
+    color: #ffffff;
+    transform: rotate(45deg);
+  }
+  .faq-row.open .a { display: block; }
+  @media (max-width: 700px) {
+    .faq-row .a { padding-left: 0 !important; }
+  }
+</style>

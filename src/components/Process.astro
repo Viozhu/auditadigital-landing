@@ -1,0 +1,37 @@
+---
+import { processSteps } from '../config/site';
+---
+<section class="py-24 border-b border-line" id="proceso">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 mb-14 items-start">
+      <div class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.12em] pt-3">
+        <span class="text-orange">05</span> · Proceso
+      </div>
+      <div>
+        <h2 class="font-display font-bold leading-[0.95] tracking-[-0.035em] mb-5 max-w-[22ch]"
+            style="font-size: clamp(36px, 5vw, 64px);">
+          De 0 a auditoría <span class="text-blue">en 48h.</span>
+        </h2>
+        <p class="text-mute-2 text-[18px] max-w-[56ch] leading-[1.5]">
+          Tú solo pagas y das tu URL. Nosotros hacemos el resto. <strong class="text-paper font-medium">Cero contraseñas, cero datos sensibles, cero reuniones.</strong>
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 border border-line rounded-s overflow-hidden bg-ink-2">
+      {processSteps.map((step, i) => (
+        <div class="relative flex flex-col p-8 min-h-[280px] border-r border-line last:border-r-0 max-md:border-r-0 max-md:border-b max-md:last:border-b-0">
+          <div class="font-display font-bold text-[80px] leading-none tracking-[-0.05em] text-blue mb-4">{step.num}</div>
+          <div class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.1em] mb-2">
+            <strong class="text-green font-medium">{step.when}</strong>
+          </div>
+          <h4 class="font-display font-semibold text-[20px] tracking-[-0.02em] mb-2 leading-[1.15]">{step.title}</h4>
+          <p class="text-mute-2 text-[14px] leading-[1.5]">{step.desc}</p>
+          {i < processSteps.length - 1 && (
+            <div class="absolute top-14 -right-[10px] w-5 h-5 bg-ink-2 text-blue grid place-items-center font-mono font-bold z-10 border border-line rounded-full text-[11px] max-md:hidden">→</div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

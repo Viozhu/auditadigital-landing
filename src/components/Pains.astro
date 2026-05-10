@@ -1,0 +1,88 @@
+---
+import { pains, PRICE_LAUNCH } from '../config/site';
+
+interface Props {
+  stripeLink: string;
+}
+const { stripeLink } = Astro.props;
+---
+<section class="py-24 border-b border-line">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 mb-14 items-start">
+      <div class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.12em] pt-3">
+        <span class="text-orange">03</span> · Diagnóstico
+      </div>
+      <div>
+        <h2 class="font-display font-bold leading-[0.95] tracking-[-0.035em] mb-5 max-w-[22ch]"
+            style="font-size: clamp(36px, 5vw, 64px);">
+          Los fallos que <span class="strike-line-sm">te están</span> costando dinero ahora mismo.
+        </h2>
+        <p class="text-mute-2 text-[18px] max-w-[56ch] leading-[1.5]">
+          Si te suena cualquiera de estas frases, no eres tú. Es tu web. Estos son los <strong class="text-paper font-medium">4 dolores</strong> que repiten dueños de e-commerce y marketers cada semana antes de comprarnos una auditoría.
+        </p>
+      </div>
+    </div>
+
+    <!-- Pains grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-line border border-line rounded-s overflow-hidden">
+      {pains.filter(p => !p.span).map(pain => (
+        <div class="bg-ink-2 p-8 min-h-[280px] flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-[11px] text-mute tracking-[0.08em]">{pain.num}</span>
+              <span class="font-mono text-[11px] bg-orange text-paper px-2 py-1 rounded-xs tracking-[0.04em]">{pain.stat}</span>
+            </div>
+            <p class="font-display font-semibold text-[24px] leading-[1.15] tracking-[-0.025em] mb-6 before:content-['"'] before:text-orange before:mr-1 after:content-['"'] after:text-orange after:ml-0.5">
+              {pain.quote}
+            </p>
+          </div>
+          <div class="font-mono text-[11px] text-mute-2 border-t border-dashed border-line-2 pt-[14px] leading-[1.6]" set:html={pain.meta}></div>
+        </div>
+      ))}
+      <!-- Fullwidth pain -->
+      {pains.filter(p => p.span).map(pain => (
+        <div class="bg-ink-2 p-8 min-h-[280px] flex flex-col justify-between md:col-span-3">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <span class="font-mono text-[11px] text-mute tracking-[0.08em]">{pain.num}</span>
+              <span class="font-mono text-[11px] bg-orange text-paper px-2 py-1 rounded-xs tracking-[0.04em]">{pain.stat}</span>
+            </div>
+            <p class="font-display font-semibold leading-[1.15] tracking-[-0.025em] mb-6 max-w-[28ch] before:content-['"'] before:text-orange before:mr-1 after:content-['"'] after:text-orange after:ml-0.5"
+               style="font-size: 28px;">
+              {pain.quote}
+            </p>
+          </div>
+          <div class="font-mono text-[11px] text-mute-2 border-t border-dashed border-line-2 pt-[14px] leading-[1.6]" set:html={pain.meta}></div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Bottom CTA bar -->
+    <div class="mt-8 bg-ink-2 border border-line border-l-[3px] border-l-orange px-7 py-6 rounded-s flex items-center justify-between gap-6 flex-wrap">
+      <p class="font-display font-semibold text-[22px] tracking-[-0.02em] max-w-[50ch]">
+        Cada semana sin auditar es <strong class="text-orange">dinero que se va</strong> por el desagüe. Te decimos exactamente dónde y por dónde empezar.
+      </p>
+      <a href={stripeLink} data-cta="pains"
+         class="inline-flex items-center gap-3 bg-blue text-paper px-[22px] py-[16px] rounded-s font-display font-semibold text-[16px] hover:bg-[#4a73ff] hover:-translate-y-px transition-all shadow-[inset_0_-2px_0_rgba(0,0,0,0.25)] whitespace-nowrap">
+        Quiero mi auditoría por ${PRICE_LAUNCH} <span class="font-mono font-medium">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .strike-line-sm {
+    position: relative;
+    display: inline-block;
+  }
+  .strike-line-sm::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    top: 52%;
+    height: 5px;
+    background: #ff5c00;
+    transform: rotate(-2deg);
+  }
+</style>

@@ -1,0 +1,73 @@
+---
+import { pricingIncludes, PRICE_LAUNCH, PRICE_NEXT, PRICE_FINAL, TOTAL_SLOTS, GUARANTEE_MIN_FAULTS } from '../config/site';
+
+interface Props {
+  stripeLink: string;
+  slots: number;
+}
+const { stripeLink, slots } = Astro.props;
+---
+<section class="py-24 border-b border-line" id="precio">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 mb-14 items-start">
+      <div class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.12em] pt-3">
+        <span class="text-orange">08</span> · Precio
+      </div>
+      <div>
+        <h2 class="font-display font-bold leading-[0.95] tracking-[-0.035em] mb-5 max-w-[22ch]"
+            style="font-size: clamp(36px, 5vw, 64px);">
+          Por el precio de una cena, tu hoja de ruta a <span class="text-blue">30 días.</span>
+        </h2>
+        <p class="text-mute-2 text-[18px] max-w-[56ch] leading-[1.5]">
+          Lanzamiento. Las primeras <strong class="text-paper font-medium">{TOTAL_SLOTS} auditorías</strong> a ${PRICE_LAUNCH}. Después sube a ${PRICE_NEXT}, y de ahí al PVP final de ${PRICE_FINAL}. Sin descuentos tachados ni cuentas atrás falsas.
+        </p>
+      </div>
+    </div>
+
+    <div class="relative bg-ink-3 border border-line rounded-m overflow-hidden grid grid-cols-1 md:grid-cols-[1.1fr_1fr] gap-12 p-12 max-md:p-7 max-md:gap-8">
+      <!-- Green top stripe -->
+      <div class="absolute top-0 left-0 right-0 h-[2px] bg-green"></div>
+
+      <!-- Left: price -->
+      <div>
+        <div class="inline-flex items-center gap-2 bg-green text-ink font-mono text-[11px] px-[10px] py-[6px] rounded-xs uppercase tracking-[0.06em] mb-6">
+          <span class="w-[6px] h-[6px] rounded-full bg-ink" style="animation: pulse 1.4s infinite;"></span>
+          Lanzamiento · {slots} / {TOTAL_SLOTS} slots restantes
+        </div>
+        <div class="flex items-start gap-2 leading-[0.85] mb-3">
+          <span class="font-display font-bold tracking-[-0.07em] leading-[0.82]"
+                style="font-size: clamp(140px, 22vw, 280px);">{PRICE_LAUNCH}</span>
+          <span class="font-display font-bold tracking-[-0.05em] mt-[14px]"
+                style="font-size: clamp(72px, 11vw, 140px);">$</span>
+        </div>
+        <div class="font-mono text-[12px] text-mute-2 mb-7">// pago único · sin suscripción · sin onboarding</div>
+        <a href={stripeLink} data-cta="pricing"
+           class="inline-flex items-center gap-3 bg-blue text-paper px-[30px] py-[22px] rounded-s font-display font-semibold text-[18px] hover:bg-[#4a73ff] hover:-translate-y-px transition-all shadow-[inset_0_-2px_0_rgba(0,0,0,0.25)]">
+          Quiero mi auditoría por ${PRICE_LAUNCH} <span class="font-mono font-medium">→</span>
+        </a>
+        <div class="mt-[14px] font-mono text-[11px] text-mute leading-[1.7]">
+          <span class="block"><span class="text-green">// </span>checkout vía Stripe</span>
+          <span class="block"><span class="text-green">// </span>próxima subida: ${PRICE_NEXT} → pvp final ${PRICE_FINAL}</span>
+          <span class="block"><span class="text-green">// </span>cero acceso a contraseñas o datos sensibles</span>
+        </div>
+      </div>
+
+      <!-- Right: includes + guarantee -->
+      <div class="border-l border-line pl-12 flex flex-col gap-4 max-md:border-l-0 max-md:pl-0 max-md:border-t max-md:border-line max-md:pt-7">
+        <h4 class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.12em] font-medium">// incluido en tu auditoría</h4>
+        <ul class="flex flex-col gap-3">
+          {pricingIncludes.map(item => (
+            <li class="flex gap-3 text-[15px] items-start leading-[1.45]">
+              <span class="text-green font-mono font-bold flex-shrink-0 mt-0.5">✓</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <div class="mt-auto pt-[22px] border-t border-dashed border-line-2 text-[14px] text-mute-2 leading-[1.5]">
+          <strong class="text-green block font-display text-[15px] mb-1 tracking-[-0.005em] font-semibold">Garantía sin preguntas.</strong>
+          Si no encontramos al menos {GUARANTEE_MIN_FAULTS} fallos críticos que te están haciendo perder dinero, te devolvemos los ${PRICE_LAUNCH}. Sin formularios, sin discutir, sin "pero".
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

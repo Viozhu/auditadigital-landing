@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import VideoPlaceholder from '../components/VideoPlaceholder.astro';
+import Pains from '../components/Pains.astro';
+import Pillars from '../components/Pillars.astro';
+import Process from '../components/Process.astro';
+import About from '../components/About.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import Footer from '../components/Footer.astro';
+import MobileCTA from '../components/MobileCTA.astro';
+
+const STRIPE_LINK = import.meta.env.PUBLIC_STRIPE_LINK ?? '#precio';
+const SLOTS = Number(import.meta.env.PUBLIC_SLOTS ?? 14);
+---
+<Layout>
+  <Nav stripeLink={STRIPE_LINK} />
+  <main class="flex flex-col gap-32">
+    <Hero stripeLink={STRIPE_LINK} slots={SLOTS} />
+    <VideoPlaceholder />
+    <Pains stripeLink={STRIPE_LINK} />
+    <Pillars />
+    <Process />
+    <About />
+    <Testimonials />
+    <Pricing stripeLink={STRIPE_LINK} slots={SLOTS} />
+    <FAQ />
+    <FinalCTA stripeLink={STRIPE_LINK} />
+  </main>
+  <Footer slots={SLOTS} />
+  <MobileCTA stripeLink={STRIPE_LINK} />
+
+  <script>
+    // FAQ accordion toggle
+    document.querySelectorAll('.faq-row .q').forEach(q => {
+      q.addEventListener('click', () => {
+        q.closest('.faq-row')?.classList.toggle('open');
+      });
+    });
+
+    // Plausible CTA tracking
+    document.querySelectorAll('[data-cta]').forEach(el => {
+      el.addEventListener('click', () => {
+        const pos = (el as HTMLElement).dataset.cta;
+        if (typeof (window as any).plausible === 'function') {
+          (window as any).plausible('cta_click', { props: { position: pos } });
+        }
+      });
+    });
+  </script>
+
+  <style>
+    @media (max-width: 768px) {
+      body { padding-bottom: 80px; }
+    }
+  </style>
+</Layout>

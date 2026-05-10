@@ -1,0 +1,58 @@
+---
+import { aboutStats } from '../config/site';
+---
+<section class="py-24 border-b border-line">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-12 mb-14 items-start">
+      <div class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.12em] pt-3">
+        <span class="text-orange">06</span> · Quiénes somos
+      </div>
+      <div>
+        <h2 class="font-display font-bold leading-[0.95] tracking-[-0.035em] max-w-[22ch]"
+            style="font-size: clamp(36px, 5vw, 64px);">
+          El equipo detrás de cada auditoría.
+        </h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_1.2fr] gap-14 items-center">
+      <!-- Photo placeholder — replace with real 4:5 photo -->
+      <div class="about-photo relative bg-ink-2 border border-line rounded-s overflow-hidden" style="aspect-ratio: 4/5;">
+        <div class="absolute inset-0 pointer-events-none" style="background-image: repeating-linear-gradient(135deg, #1f1f23 0 1px, transparent 1px 14px); opacity: 0.6;"></div>
+        <span class="absolute top-4 left-4 font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">// FOTO_LEAD.JPG</span>
+        <div class="absolute inset-[14px]">
+          <div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-green"></div>
+          <div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-green"></div>
+        </div>
+        <div class="absolute inset-0 grid place-items-center font-mono text-[11px] text-mute uppercase tracking-[0.08em]">
+          <span class="bg-ink px-[10px] py-[6px] border border-line-2 rounded-xs">retrato del estratega · 4:5</span>
+        </div>
+        <div class="absolute bottom-4 left-4">
+          <strong class="block text-paper font-display font-semibold text-[16px] tracking-[-0.01em] mb-0.5">Lead estratega</strong>
+          <span class="font-mono text-[11px] text-mute">· auditadigital</span>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div>
+        <h2 class="font-display font-bold tracking-[-0.03em] leading-none mb-6" style="font-size: clamp(32px, 4vw, 48px);">
+          Estrategia digital sin postureo.
+        </h2>
+        <p class="text-[17px] text-mute-2 leading-[1.6] mb-[18px] max-w-[56ch]">
+          12 años montando, escalando y rompiendo webs de e-commerce, SaaS y servicios. Pasé por las dos esquinas: <strong class="text-paper font-medium">como cliente quemado por agencias caras</strong> y como consultor cobrando lo que cobran las grandes.
+        </p>
+        <p class="text-[17px] text-mute-2 leading-[1.6] max-w-[56ch]">
+          AuditaDigital nace porque nadie quiere otra reunión de venta. La gente quiere saber qué está mal en su web y empezar a arreglarlo el lunes. Eso es lo que entregamos. <strong class="text-paper font-medium">Datos pro, lectura humana, hoja de ruta ejecutable.</strong>
+        </p>
+        <div class="grid grid-cols-3 gap-4 mt-7">
+          {aboutStats.map(stat => (
+            <div class="p-[18px] bg-ink-2 border border-line rounded-s">
+              <div class={`font-display font-bold text-[36px] tracking-[-0.03em] leading-none ${stat.color}`}>{stat.value}</div>
+              <div class="font-mono text-[11px] text-mute-2 mt-2 uppercase tracking-[0.08em]">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

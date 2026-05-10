@@ -1,0 +1,15 @@
+---
+import { PRICE_LAUNCH } from '../config/site';
+
+interface Props {
+  stripeLink: string;
+}
+const { stripeLink } = Astro.props;
+---
+<div class="fixed bottom-0 left-0 right-0 z-[60] p-3 border-t border-line md:hidden"
+     style="background: rgba(5,5,5,0.95); backdrop-filter: blur(10px);">
+  <a href={stripeLink} data-cta="mobile-sticky"
+     class="flex items-center justify-center gap-3 w-full bg-blue text-paper px-[22px] py-[16px] rounded-s font-display font-semibold text-[16px] hover:bg-[#4a73ff] transition-colors shadow-[inset_0_-2px_0_rgba(0,0,0,0.25)]">
+    Quiero mi auditoría por ${PRICE_LAUNCH} <span class="font-mono font-medium">→</span>
+  </a>
+</div>

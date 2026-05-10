@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #050505;
+    color: #ffffff;
+    font-family: "Geist", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+}
+
+@layer utilities {
+  .strike-line {
+    position: relative;
+    display: inline-block;
+  }
+  .strike-line::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    top: 52%;
+    height: 8px;
+    background: #ff5c00;
+    transform: rotate(-2deg);
+  }
+  .hero-grid-bg {
+    background-image:
+      linear-gradient(#1f1f23 1px, transparent 1px),
+      linear-gradient(90deg, #1f1f23 1px, transparent 1px);
+    background-size: 60px 60px;
+    background-position: -1px -1px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 0%, transparent 75%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, #000 0%, transparent 75%);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .final-grid-bg {
+    background-image:
+      linear-gradient(#1f1f23 1px, transparent 1px),
+      linear-gradient(90deg, #1f1f23 1px, transparent 1px);
+    background-size: 60px 60px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 0%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 0%, transparent 75%);
+    opacity: 0.5;
+  }
+}
+
+@keyframes pulse {
+  50% { opacity: 0.35; }
+}
