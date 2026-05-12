@@ -1,0 +1,134 @@
+<style>
+  body { background: #0d0d10; color: #e2e2e6; font-family: 'Geist', system-ui, sans-serif; }
+  .question { font-size: 13px; color: #8888a0; text-align: center; margin-bottom: 32px; letter-spacing: 0.05em; }
+  .cards { display: flex; flex-direction: column; gap: 24px; max-width: 860px; margin: 0 auto; }
+  .card { background: #131316; border: 1px solid #2a2a35; border-radius: 6px; overflow: hidden; cursor: pointer; transition: border-color 0.2s; }
+  .card:hover { border-color: #4444ff; }
+  .card.selected { border-color: #5a5aff; box-shadow: 0 0 0 1px #5a5aff; }
+  .card-label { padding: 14px 20px; border-bottom: 1px solid #1e1e28; display: flex; align-items: center; gap: 12px; }
+  .card-label .letter { width: 24px; height: 24px; border-radius: 4px; background: #1e1e30; border: 1px solid #3a3a50; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #8888ff; font-family: monospace; }
+  .card-label h3 { margin: 0; font-size: 14px; font-weight: 600; color: #e2e2e6; }
+  .card-label .desc { margin: 0 0 0 auto; font-size: 11px; color: #66667a; font-family: monospace; }
+  .mockup-body { padding: 24px; }
+
+  /* Shared mockup elements */
+  .m-tag { font-family: monospace; font-size: 10px; color: #5a5a70; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 8px; }
+  .m-tag span { color: #e07a30; }
+  .m-h2 { font-size: 22px; font-weight: 700; color: #fff; line-height: 1; letter-spacing: -0.03em; margin: 0 0 12px; }
+  .m-body { font-size: 12px; color: #7070a0; line-height: 1.6; max-width: 52ch; }
+  .m-stat-val { font-size: 26px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; }
+  .m-stat-label { font-family: monospace; font-size: 9px; color: #55556a; text-transform: uppercase; margin-top: 4px; letter-spacing: 0.08em; }
+  .m-stat-box { background: #0f0f14; border: 1px solid #1e1e2a; border-radius: 4px; padding: 14px 16px; }
+  .m-divider { border: none; border-top: 1px solid #1e1e28; margin: 18px 0; }
+  .m-quote { border-left: 2px solid #3a3aff; padding-left: 14px; font-size: 13px; color: #9090b0; line-height: 1.6; font-style: italic; }
+  .m-name { font-size: 14px; font-weight: 600; color: #fff; }
+  .m-role { font-family: monospace; font-size: 10px; color: #55556a; }
+  .m-badge { display: inline-block; font-family: monospace; font-size: 9px; color: #5a5a70; border: 1px solid #2a2a35; border-radius: 3px; padding: 3px 7px; }
+
+  /* Layout A — Centered hero bio */
+  .layout-a { text-align: left; max-width: 640px; margin: 0 auto; }
+  .layout-a .m-h2 { font-size: 28px; margin-bottom: 16px; }
+  .layout-a .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+  .layout-a .m-body { max-width: 100%; }
+
+  /* Layout B — Stats-forward */
+  .layout-b .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 20px; }
+  .layout-b .bottom { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .layout-b .m-h2 { font-size: 22px; margin-bottom: 10px; }
+
+  /* Layout C — Two-column text */
+  .layout-c .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 20px; }
+  .layout-c .m-h2 { font-size: 28px; margin-bottom: 20px; }
+  .layout-c .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
+  .layout-c .col-label { font-family: monospace; font-size: 9px; color: #5a5a70; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+</style>
+
+<h2 style="text-align:center; font-size:18px; font-weight:700; color:#fff; margin-bottom:6px;">Sección About — sin foto</h2>
+<p class="question">¿Qué layout se ajusta mejor a la sección?</p>
+
+<div class="cards">
+
+  <!-- OPTION A -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-label">
+      <div class="letter">A</div>
+      <h3>Bio centrada + stats debajo</h3>
+      <span class="desc">// clean · focused</span>
+    </div>
+    <div class="mockup-body">
+      <div class="layout-a">
+        <div class="m-tag"><span>06</span> · Quiénes somos</div>
+        <div class="m-h2">Estrategia digital<br>sin postureo.</div>
+        <div class="m-body">12 años montando, escalando y rompiendo webs de e-commerce, SaaS y servicios. AuditaDigital nace porque nadie quiere otra reunión de venta. <strong style="color:#c8c8e0;">Datos pro, lectura humana, hoja de ruta ejecutable.</strong></div>
+        <div class="stats-row" style="margin-top:18px;">
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#3a7fff;">12+</div><div class="m-stat-label">años experiencia</div></div>
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#3fbf7f;">+200</div><div class="m-stat-label">webs auditadas</div></div>
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#e07a30;">98%</div><div class="m-stat-label">clientes satisfechos</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-label">
+      <div class="letter">B</div>
+      <h3>Stats arriba + bio abajo en 2 columnas</h3>
+      <span class="desc">// data-forward</span>
+    </div>
+    <div class="mockup-body">
+      <div class="layout-b">
+        <div class="m-tag"><span>06</span> · Quiénes somos</div>
+        <div class="stats-row">
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#3a7fff;">12+</div><div class="m-stat-label">años exp.</div></div>
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#3fbf7f;">+200</div><div class="m-stat-label">auditorías</div></div>
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#e07a30;">98%</div><div class="m-stat-label">satisfechos</div></div>
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#9966ff;">4.9★</div><div class="m-stat-label">valoración</div></div>
+        </div>
+        <hr class="m-divider">
+        <div class="bottom">
+          <div>
+            <div class="m-h2">Estrategia digital sin postureo.</div>
+            <div class="m-body">12 años montando, escalando y rompiendo webs de e-commerce, SaaS y servicios.</div>
+          </div>
+          <div>
+            <div class="m-body">AuditaDigital nace porque nadie quiere otra reunión de venta. La gente quiere saber qué está mal en su web. <strong style="color:#c8c8e0;">Datos pro, lectura humana, hoja de ruta ejecutable.</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-label">
+      <div class="letter">C</div>
+      <h3>Heading grande + quote destacada + stats</h3>
+      <span class="desc">// editorial · bold</span>
+    </div>
+    <div class="mockup-body">
+      <div class="layout-c">
+        <div class="m-tag"><span>06</span> · Quiénes somos</div>
+        <div class="m-h2">El equipo detrás<br>de cada auditoría.</div>
+        <div class="m-quote">"Pasé por las dos esquinas: como cliente quemado por agencias caras y como consultor cobrando lo que cobran las grandes."</div>
+        <hr class="m-divider">
+        <div class="cols">
+          <div>
+            <div class="col-label">// quien_somos</div>
+            <div class="m-body">12 años montando, escalando y rompiendo webs de e-commerce, SaaS y servicios profesionales.</div>
+          </div>
+          <div>
+            <div class="col-label">// por_que_existe</div>
+            <div class="m-body">AuditaDigital nace porque nadie quiere otra reunión de venta. <strong style="color:#c8c8e0;">Datos pro, lectura humana, ejecutable el lunes.</strong></div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#3a7fff;">12+</div><div class="m-stat-label">años experiencia</div></div>
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#3fbf7f;">+200</div><div class="m-stat-label">webs auditadas</div></div>
+          <div class="m-stat-box"><div class="m-stat-val" style="color:#e07a30;">98%</div><div class="m-stat-label">clientes satisfechos</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
