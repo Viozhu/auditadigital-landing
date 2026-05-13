@@ -29,9 +29,15 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const apiKey = import.meta.env.RESEND_API_KEY;
-  const toEmail = import.meta.env.CONTACT_EMAIL || 'hola@auditadigital.com';
+  const toEmail = import.meta.env.CONTACT_EMAIL;
 
   if (!apiKey) {
+    console.error('[contact] RESEND_API_KEY no configurada');
+    return json('Servicio no configurado', 500);
+  }
+
+  if (!toEmail) {
+    console.error('[contact] CONTACT_EMAIL no configurada');
     return json('Servicio no configurado', 500);
   }
 
@@ -56,7 +62,8 @@ export const POST: APIRoute = async ({ request }) => {
   });
 
   if (error) {
-    return json('Error al enviar el mensaje. Intentá de nuevo.', 500);
+    console.error('[contact] Resend error:', JSON.stringify(error));
+    return json(`Error Resend: ${error.message}`, 500);
   }
 
   return json('ok');
