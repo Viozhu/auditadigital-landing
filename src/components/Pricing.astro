@@ -49,11 +49,11 @@ const { stripeLink, slots } = Astro.props;
         </div>
         <a href={stripeLink} data-cta="pricing"
            class="inline-flex items-center gap-3 bg-blue text-paper px-[30px] py-[22px] rounded-s font-display font-semibold text-[18px] hover:bg-[#4a73ff] hover:-translate-y-px transition-all shadow-[inset_0_-2px_0_rgba(0,0,0,0.25)]">
-          Quiero mi auditoría por $${PRICE_LAUNCH} USD <span class="font-mono font-medium">→</span>
+          Quiero mi auditoría por ${PRICE_LAUNCH} USD <span class="font-mono font-medium">→</span>
         </a>
         <div class="mt-[14px] font-mono text-[11px] text-mute leading-[1.7]">
           <span class="block"><span class="text-green">// </span>checkout vía Stripe</span>
-          <span class="block"><span class="text-green">// </span>próxima subida: $${PRICE_NEXT} USD → pvp final $${PRICE_FINAL} USD</span>
+          <span class="block"><span class="text-green">// </span>próxima subida: ${PRICE_NEXT} USD → pvp final ${PRICE_FINAL} USD</span>
           <span class="block"><span class="text-green">// </span>cero acceso a contraseñas o datos sensibles</span>
         </div>
       </div>
