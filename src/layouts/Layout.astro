@@ -2,17 +2,64 @@
 import '../styles/global.css';
 import '../styles/tokens.css';
 import Favicon from '../components/Favicon.astro';
+import { faqs, PRICE_LAUNCH } from '../config/site';
 
 interface Props {
   title?: string;
   description?: string;
 }
 const {
-  title = "AuditaDigital — Tu radiografía digital en 48h por $50",
-  description = "Auditoría profunda de tu web en 4 pilares: SEO, Negocio, Competencia y Meta Ads. Entregada en 48h. Sin reuniones de venta.",
+  title = `AuditaDigital — Tu radiografía digital en 48h por $${PRICE_LAUNCH}`,
+  description = `Auditoría digital completa en 4 pilares: SEO técnico, negocio, competencia y Meta Ads. Informe profesional entregado en 48h. Sin reuniones ni contratos. Desde $${PRICE_LAUNCH}.`,
 } = Astro.props;
 
-const STRIPE_LINK = import.meta.env.PUBLIC_STRIPE_LINK ?? '#precio';
+const siteUrl = "https://auditadigital.com";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
+const ogImage = `${siteUrl}/brand/auditadigital-favicon-512.png`;
+
+function stripHtml(html: string) {
+  return html.replace(/<[^>]+>/g, '');
+}
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      "name": "AuditaDigital",
+      "url": siteUrl,
+      "logo": `${siteUrl}/brand/auditadigital-logo-color-dark.png`,
+      "description": "Agencia de auditoría digital especializada en SEO, negocio, competencia y Meta Ads para PYMEs argentinas.",
+      "areaServed": "Argentina"
+    },
+    {
+      "@type": "Service",
+      "@id": `${siteUrl}/#service`,
+      "name": "Auditoría Digital",
+      "serviceType": "Auditoría digital para sitios web",
+      "description": "Auditoría completa en 4 pilares: SEO técnico, negocio, competencia y Meta Ads. Informe interactivo entregado en 48 horas.",
+      "provider": { "@id": `${siteUrl}/#organization` },
+      "areaServed": { "@type": "Country", "name": "Argentina" },
+      "offers": {
+        "@type": "Offer",
+        "price": `${PRICE_LAUNCH}`,
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": stripHtml(faq.a)
+        }
+      }))
+    }
+  ]
+};
 ---
 <!doctype html>
 <html lang="es">
@@ -21,6 +68,26 @@ const STRIPE_LINK = import.meta.env.PUBLIC_STRIPE_LINK ?? '#precio';
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:site_name" content="AuditaDigital" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
+
   <Favicon />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
