@@ -18,9 +18,8 @@ import { faqs } from '../config/site';
     <div class="faq flex flex-col">
       {faqs.map((faq, i) => (
         <div class={`faq-row border-b border-line py-[26px] ${i === 0 ? 'border-t open' : ''}`}>
-          <div class="q cursor-pointer items-center gap-4 max-md:grid max-md:grid-cols-[1fr_28px]"
-               style="display: grid; grid-template-columns: 60px 1fr 28px;">
-            <span class="font-mono text-[11px] text-orange tracking-[0.08em] max-md:hidden">
+          <div class="q cursor-pointer faq-q">
+            <span class="faq-num font-mono text-[11px] text-orange tracking-[0.08em]">
               0{i + 1}
             </span>
             <span class="font-display font-semibold text-[20px] tracking-[-0.015em] leading-[1.25]">{faq.q}</span>
@@ -36,6 +35,19 @@ import { faqs } from '../config/site';
 </section>
 
 <style>
+  .faq-q {
+    display: grid;
+    grid-template-columns: 60px 1fr 28px;
+    align-items: center;
+    gap: 1rem;
+  }
+  @media (max-width: 767px) {
+    .faq-q {
+      grid-template-columns: 1fr 28px;
+    }
+    .faq-num { display: none; }
+    .faq-row .a { padding-left: 0 !important; }
+  }
   .faq-row.open .q .plus {
     background: #2e5bff;
     border-color: #2e5bff;
@@ -43,7 +55,4 @@ import { faqs } from '../config/site';
     transform: rotate(45deg);
   }
   .faq-row.open .a { display: block; }
-  @media (max-width: 700px) {
-    .faq-row .a { padding-left: 0 !important; }
-  }
 </style>

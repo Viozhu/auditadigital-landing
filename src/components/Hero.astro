@@ -1,5 +1,5 @@
 ---
-import { PRICE_LAUNCH, PRICE_NEXT, PRICE_FINAL, DELIVERY_HOURS, GUARANTEE_MIN_FAULTS } from '../config/site';
+import { PRICE_LAUNCH, PRICE_LAUNCH_ARS, PRICE_NEXT, PRICE_FINAL, DELIVERY_HOURS, GUARANTEE_MIN_FAULTS } from '../config/site';
 
 interface Props {
   stripeLink: string;
@@ -16,7 +16,7 @@ const { stripeLink, slots } = Astro.props;
     <div class="flex gap-[10px] mb-8 flex-wrap">
       <span class="inline-flex items-center gap-2 bg-green text-ink font-mono text-[11px] px-[10px] py-[6px] rounded-xs uppercase tracking-[0.06em]">
         <span class="w-[6px] h-[6px] rounded-full bg-ink" style="animation: pulse 1.6s infinite;"></span>
-        {slots} slots disponibles esta semana a ${PRICE_LAUNCH}
+        {slots} slots disponibles esta semana a $${PRICE_LAUNCH} USD
       </span>
       <span class="inline-flex items-center gap-2 border border-line-2 text-mute-2 font-mono text-[11px] px-[10px] py-[6px] rounded-xs uppercase tracking-[0.06em]">
         // lanzamiento · cohorte 01
@@ -41,7 +41,7 @@ const { stripeLink, slots } = Astro.props;
         <div class="flex gap-3 mt-7 flex-wrap">
           <a href={stripeLink} data-cta="hero"
              class="inline-flex items-center justify-center gap-3 bg-blue text-paper px-[30px] py-[22px] rounded-s font-display font-semibold text-[18px] tracking-[-0.005em] hover:bg-[#4a73ff] hover:-translate-y-px transition-all shadow-[inset_0_-2px_0_rgba(0,0,0,0.25)]">
-            Quiero mi auditoría por ${PRICE_LAUNCH} <span class="font-mono font-medium">→</span>
+            Quiero mi auditoría por $${PRICE_LAUNCH} USD <span class="font-mono font-medium">→</span>
           </a>
           <a href="#video"
              class="inline-flex items-center justify-center gap-3 border border-line-2 text-paper px-[22px] py-[15px] rounded-s font-display font-semibold text-[16px] hover:border-paper hover:bg-white/[0.04] transition-all">
@@ -58,11 +58,14 @@ const { stripeLink, slots } = Astro.props;
         </div>
         <div class="flex items-start gap-1 leading-[0.85]">
           <span class="font-display font-bold text-[144px] tracking-[-0.06em]">{PRICE_LAUNCH}</span>
-          <span class="font-display font-bold text-[64px] tracking-[-0.04em] mt-[14px]">$</span>
+          <div class="flex flex-col mt-[14px] gap-1">
+            <span class="font-display font-bold text-[64px] tracking-[-0.04em]">$</span>
+            <span class="font-mono text-[11px] text-mute-2 tracking-[0.06em] uppercase">USD</span>
+          </div>
         </div>
         <div class="font-mono text-[11px] text-mute mt-2 mb-[18px] leading-[1.6]">
-          pago único · sin suscripción<br/>
-          próxima subida: ${PRICE_NEXT} &nbsp;·&nbsp; pvp final ${PRICE_FINAL}
+          ≈ ${PRICE_LAUNCH_ARS.toLocaleString('es-AR')} ARS · pago único · sin suscripción<br/>
+          próxima subida: $${PRICE_NEXT} USD &nbsp;·&nbsp; pvp final $${PRICE_FINAL} USD
         </div>
         <a href={stripeLink} data-cta="hero-card"
            class="flex items-center justify-center gap-3 w-full bg-blue text-paper px-[22px] py-[16px] rounded-s font-display font-semibold text-[16px] hover:bg-[#4a73ff] hover:-translate-y-px transition-all shadow-[inset_0_-2px_0_rgba(0,0,0,0.25)]">

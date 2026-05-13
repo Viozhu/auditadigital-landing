@@ -1,5 +1,6 @@
 // --- Pricing & Product Numbers ---
 export const PRICE_LAUNCH = 49;
+export const PRICE_LAUNCH_ARS = 70_000; // actualizar según cotización
 export const PRICE_NEXT = 59;
 export const PRICE_FINAL = 89;
 export const TOTAL_SLOTS = 100;
@@ -87,10 +88,6 @@ export interface Faq {
 }
 
 export const faqs: Faq[] = [
-  {
-    q: "¿Es una auditoría automática hecha con un script o IA?",
-    a: 'No. Usamos herramientas profesionales para extraer datos —Lighthouse, Ahrefs, Meta Ad Library, crawls propios— pero <strong class="text-paper font-medium">la lectura, la priorización y la hoja de ruta son 100% humanas y estratégicas.</strong> Lo que recibes no es un PDF generado por IA: es interpretación, contexto y plan de acción.',
-  },
   {
     q: "¿Qué necesito darte para empezar?",
     a: "Solo tu URL. Cero accesos a Google Analytics, cero contraseñas de tu hosting, cero datos de cliente. Trabajamos sobre lo que es público + datos extraídos con nuestras herramientas pro. Si en algún punto necesitamos más info la pedimos por email, nunca te la exigimos de entrada.",
