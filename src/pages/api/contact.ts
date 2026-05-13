@@ -38,7 +38,7 @@ export const POST: APIRoute = async ({ request }) => {
   const resend = new Resend(apiKey);
 
   const { error } = await resend.emails.send({
-    from: 'AuditaDigital <contacto@auditadigital.com>',
+    from: 'AuditaDigital <onboarding@resend.dev>',
     to: toEmail,
     replyTo: email,
     subject: `[Contacto] ${asunto}`,
