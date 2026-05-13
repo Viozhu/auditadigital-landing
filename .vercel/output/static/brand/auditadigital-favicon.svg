@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="auditadigital">
+  <title>auditadigital</title>
+  <rect width="64" height="64" rx="10" fill="#050505"></rect>
+  
+  <circle cx="14" cy="16" r="3" fill="#2E5BFF"></circle>
+  <circle cx="24" cy="16" r="3" fill="#A3FF12"></circle>
+  <circle cx="34" cy="16" r="3" fill="#2E5BFF"></circle>
+  <circle cx="44" cy="16" r="3" fill="#A3FF12"></circle>
+  
+  <text x="32" y="52" text-anchor="middle" font-family="&#39;Space Grotesk&#39;, system-ui, -apple-system, sans-serif" font-weight="700" font-size="30" letter-spacing="-1" fill="#FFFFFF">a<tspan fill="#2E5BFF">d</tspan></text>
+</svg>

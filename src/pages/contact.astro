@@ -1,0 +1,169 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Contacto — AuditaDigital"
+  description="¿Tenés dudas antes de contratar? Escribinos. Te respondemos en menos de 24 horas."
+>
+  <main class="bg-ink min-h-screen">
+    <div class="mx-auto max-w-[1240px] px-6 py-16 md:py-24">
+
+      <a href="/" class="inline-flex items-center gap-2 font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em] hover:text-paper transition-colors mb-12">
+        ← Volver al inicio
+      </a>
+
+      <div class="mb-12 border-b border-line pb-8">
+        <p class="font-mono text-[11px] text-orange uppercase tracking-[0.08em] mb-3">// Contacto</p>
+        <h1 class="font-display text-h1 text-paper">¿Tenés alguna duda?</h1>
+        <p class="font-body text-body text-mute mt-2">Te respondemos en menos de 24 horas. Sin spam, sin llamadas.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-x-12 gap-y-10 items-start">
+
+        <div class="pt-1">
+          <p class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">01 · Formulario</p>
+          <p class="font-body text-small text-mute mt-3 leading-relaxed">Para cualquier consulta, sea que ya compraste o estás evaluando la auditoría.</p>
+        </div>
+
+        <div>
+          <form id="contact-form" class="flex flex-col gap-5" novalidate>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div class="flex flex-col gap-2">
+                <label for="nombre" class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">Nombre</label>
+                <input
+                  id="nombre" name="nombre" type="text" required autocomplete="name"
+                  placeholder="Tu nombre"
+                  class="bg-ink-2 border border-line rounded-s px-4 py-3 font-body text-body text-paper placeholder:text-mute focus:outline-none focus:border-blue transition-colors"
+                />
+              </div>
+              <div class="flex flex-col gap-2">
+                <label for="email" class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">Email</label>
+                <input
+                  id="email" name="email" type="email" required autocomplete="email"
+                  placeholder="tu@email.com"
+                  class="bg-ink-2 border border-line rounded-s px-4 py-3 font-body text-body text-paper placeholder:text-mute focus:outline-none focus:border-blue transition-colors"
+                />
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="asunto" class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">Asunto</label>
+              <input
+                id="asunto" name="asunto" type="text" required
+                placeholder="¿De qué se trata?"
+                class="bg-ink-2 border border-line rounded-s px-4 py-3 font-body text-body text-paper placeholder:text-mute focus:outline-none focus:border-blue transition-colors"
+              />
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <label for="mensaje" class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">Mensaje</label>
+              <textarea
+                id="mensaje" name="mensaje" required rows="5"
+                placeholder="Contanos en detalle…"
+                class="bg-ink-2 border border-line rounded-s px-4 py-3 font-body text-body text-paper placeholder:text-mute focus:outline-none focus:border-blue transition-colors resize-none"
+              ></textarea>
+            </div>
+
+            <div id="form-error" class="hidden font-mono text-[12px] text-orange bg-orange/10 border border-orange/30 rounded-s px-4 py-3"></div>
+
+            <div>
+              <button
+                type="submit"
+                id="submit-btn"
+                class="inline-flex items-center gap-2 bg-blue text-paper px-6 py-3 rounded-s font-display font-semibold text-[14px] tracking-[-0.005em] hover:bg-blue-soft transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <span id="btn-text">Enviar mensaje</span>
+                <span id="btn-icon" class="font-mono">→</span>
+              </button>
+            </div>
+
+          </form>
+
+          <div id="success-msg" class="hidden">
+            <div class="bg-green/10 border border-green/30 rounded-s px-6 py-5">
+              <p class="font-mono text-[11px] text-green uppercase tracking-[0.08em] mb-1">// Mensaje enviado</p>
+              <p class="font-display font-semibold text-paper text-[18px]">¡Gracias! Te respondemos pronto.</p>
+              <p class="font-body text-body text-mute mt-1">Revisá tu bandeja en las próximas 24 horas.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-1">
+          <p class="font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">02 · Email directo</p>
+        </div>
+        <div>
+          <p class="font-body text-body text-mute">Si preferís escribir directo:</p>
+          <a href="mailto:hola@auditadigital.com" class="font-display font-semibold text-blue hover:text-paper transition-colors text-[18px]">
+            hola@auditadigital.com
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="border-t border-line bg-ink-2 py-6">
+    <div class="mx-auto max-w-[1240px] px-6 flex flex-col md:flex-row gap-4 items-center justify-between">
+      <p class="font-mono text-[11px] text-mute">© 2026 AuditaDigital</p>
+      <div class="flex gap-6 font-mono text-[11px] text-mute-2 uppercase tracking-[0.08em]">
+        <a href="/aviso-legal" class="hover:text-paper transition-colors">Aviso legal</a>
+        <a href="/privacidad" class="hover:text-paper transition-colors">Privacidad</a>
+        <a href="/contact" class="text-paper">Contacto</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = document.getElementById('btn-text')!;
+  const btnIcon = document.getElementById('btn-icon')!;
+  const errorDiv = document.getElementById('form-error')!;
+  const successMsg = document.getElementById('success-msg')!;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    errorDiv.classList.add('hidden');
+
+    const data = {
+      nombre: (form.nombre as HTMLInputElement).value.trim(),
+      email: (form.email as HTMLInputElement).value.trim(),
+      asunto: (form.asunto as HTMLInputElement).value.trim(),
+      mensaje: (form.mensaje as HTMLTextAreaElement).value.trim(),
+    };
+
+    submitBtn.disabled = true;
+    btnText.textContent = 'Enviando…';
+    btnIcon.textContent = '⋯';
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      const json = await res.json();
+
+      if (!res.ok) {
+        errorDiv.textContent = json.error || 'Error al enviar. Intentá de nuevo.';
+        errorDiv.classList.remove('hidden');
+        submitBtn.disabled = false;
+        btnText.textContent = 'Enviar mensaje';
+        btnIcon.textContent = '→';
+        return;
+      }
+
+      form.classList.add('hidden');
+      successMsg.classList.remove('hidden');
+    } catch {
+      errorDiv.textContent = 'Error de conexión. Intentá de nuevo.';
+      errorDiv.classList.remove('hidden');
+      submitBtn.disabled = false;
+      btnText.textContent = 'Enviar mensaje';
+      btnIcon.textContent = '→';
+    }
+  });
+</script>
