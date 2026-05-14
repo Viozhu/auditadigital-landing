@@ -81,6 +81,11 @@ import Layout from '../layouts/Layout.astro';
               <p class="font-mono text-[11px] text-orange">01 · Contacto</p>
             </div>
 
+            <div id="prefill-banner" class="hidden items-start gap-3 bg-blue/8 border border-blue/25 rounded-s px-4 py-3">
+              <span class="font-mono text-blue text-[13px] mt-[1px] shrink-0">✦</span>
+              <p class="font-body text-small text-blue">Formulario pre-completado desde tu mini-auditoría. Revisá los datos y enviá cuando estés listo.</p>
+            </div>
+
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div class="field-group">
                 <label for="nombre" class="field-label">Nombre</label>
@@ -219,6 +224,31 @@ import Layout from '../layouts/Layout.astro';
 </style>
 
 <script>
+  // Pre-fill form from query params (e.g. from mini-auditoria CTA)
+  const searchParams = new URLSearchParams(window.location.search);
+  const PREFILL_KEYS = ['nombre', 'email', 'asunto', 'mensaje'] as const;
+  let prefilled = false;
+
+  for (const key of PREFILL_KEYS) {
+    const val = searchParams.get(key);
+    if (val) {
+      const el = document.getElementById(key) as HTMLInputElement | HTMLTextAreaElement | null;
+      if (el) {
+        el.value = val;
+        prefilled = true;
+      }
+    }
+  }
+
+  if (prefilled) {
+    const banner = document.getElementById('prefill-banner');
+    if (banner) {
+      banner.classList.remove('hidden');
+      banner.classList.add('flex');
+    }
+    document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   const form = document.getElementById('contact-form') as HTMLFormElement;
   const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
   const btnText = document.getElementById('btn-text')!;
