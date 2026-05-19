@@ -30,7 +30,7 @@
     right: -2%;
     top: 52%;
     height: 8px;
-    background: #ff5c00;
+    background: var(--color-orange);
     transform: rotate(-2deg);
   }
   .hero-grid-bg {
