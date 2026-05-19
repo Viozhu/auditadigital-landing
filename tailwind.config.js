@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink:           'var(--color-ink)',
+        ink:           'rgb(var(--color-ink-rgb) / <alpha-value>)',
         'ink-2':       'var(--color-ink-2)',
         'ink-3':       'var(--color-ink-3)',
         'ink-4':       'var(--color-ink-4)',
@@ -13,11 +13,11 @@ export default {
         mute:          'var(--color-mute)',
         'mute-2':      'var(--color-mute-2)',
         paper:         'var(--color-paper)',
-        blue:          'var(--color-blue)',
+        blue:          'rgb(var(--color-blue-rgb) / <alpha-value>)',
         'blue-soft':   'var(--color-blue-soft)',
         'blue-ink':    'var(--color-blue-ink)',
         green:         'var(--color-green)',
-        orange:        'var(--color-orange)',
+        orange:        'rgb(var(--color-orange-rgb) / <alpha-value>)',
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
