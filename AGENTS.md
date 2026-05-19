@@ -32,5 +32,10 @@ progress/history.md  ← bitácora append-only
 docs/architecture.md ← decisiones Astro: output, islands, layouts
 docs/conventions.md  ← naming, Tailwind, accesibilidad, breakpoints
 docs/verification.md ← cómo probar (Lighthouse, a11y, responsive)
-.claude/agents/      ← instrucciones detalladas por rol
+.claude/agents/      ← instrucciones detalladas por rol (gitignored, solo local)
 ```
+
+> **Nota:** `.claude/` está en `.gitignore` — los archivos de agentes no se commitean.
+> Viven solo en la máquina local. Si clonas el repo en una máquina nueva, recrea
+> `.claude/agents/{leader,implementer,reviewer}.md` siguiendo los roles descritos en
+> este archivo y los criterios de `CHECKPOINTS.md`.
